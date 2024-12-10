@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="icon" href="/images/icon.jpg">
   
-  <title>nmap一些常用指令 | 马小九の个人博客</title>
+  <title>Samba服务器搭建部署 | 马小九の个人博客</title>
   
   <meta name="author" content="马小九" />
   <meta http-equiv="Cache-Control" content="no-transform" />
@@ -17,16 +17,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="一、nmap主机发现1、 Ping 扫描1nmap -sn &lt;target&gt; &#x2F;&#x2F;只进行主机发现，不扫描端口。  2、禁用 DNS 解析的 Ping 扫描1nmap -sn -n &lt;target&gt; &#x2F;&#x2F;在进行主机发现时禁用 DNS 解析，直接使用 IP 地址。  3、 ICMP Ping 扫描1nmap -PE &lt;target&gt; &#x2F;&#x2F;使用 ICMP Echo 请">
+  <meta name="description" content="Samba服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1vi &#x2F;etc&#x2F;yum.repos.d&#x2F;cdrom.repo  12345[cdrom]name&#x3D;cdrombaseurl&#x3D;file:&#x2F;&#x2F;&#x2F;mnt&#x2F;cdro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nmap一些常用指令">
-<meta property="og:url" content="http://example.com/2024/11/10/nmap%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/index.html">
+<meta property="og:title" content="Samba服务器搭建部署">
+<meta property="og:url" content="http://example.com/2024/12/10/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="马小九の个人博客">
-<meta property="og:description" content="一、nmap主机发现1、 Ping 扫描1nmap -sn &lt;target&gt; &#x2F;&#x2F;只进行主机发现，不扫描端口。  2、禁用 DNS 解析的 Ping 扫描1nmap -sn -n &lt;target&gt; &#x2F;&#x2F;在进行主机发现时禁用 DNS 解析，直接使用 IP 地址。  3、 ICMP Ping 扫描1nmap -PE &lt;target&gt; &#x2F;&#x2F;使用 ICMP Echo 请">
+<meta property="og:description" content="Samba服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1vi &#x2F;etc&#x2F;yum.repos.d&#x2F;cdrom.repo  12345[cdrom]name&#x3D;cdrombaseurl&#x3D;file:&#x2F;&#x2F;&#x2F;mnt&#x2F;cdro">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/icon.jpg">
-<meta property="article:published_time" content="2024-11-10T11:24:13.000Z">
-<meta property="article:modified_time" content="2024-11-10T11:27:30.591Z">
+<meta property="article:published_time" content="2024-12-10T11:42:27.000Z">
+<meta property="article:modified_time" content="2024-12-10T12:18:40.867Z">
 <meta property="article:author" content="马小九">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/icon.jpg">
@@ -123,15 +123,15 @@
 
             <article itemscope itemtype="https://schema.org/Article">
     
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/11/10/nmap%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/12/10/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             
-                <h1 class="kratos-entry-title text-center" itemprop="name headline">nmap一些常用指令</h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">Samba服务器搭建部署</h1>
             
             
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="2024-11-10T11:24:13.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2024-11-10</time></li>
+                <li><time datetime="2024-12-10T11:42:27.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2024-12-10</time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> 作者 <span itemprop="name">马小九</span>
                 </li>
@@ -140,7 +140,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~1.99K
+                            1401
                         
                         字
                     </li>
@@ -152,79 +152,59 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1731238050591"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1733833120867"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
             
             <hr />
-            <div itemprop="articleBody"><h2 id="一、nmap主机发现"><a href="#一、nmap主机发现" class="headerlink" title="一、nmap主机发现"></a>一、nmap主机发现</h2><h5 id="1、-Ping-扫描"><a href="#1、-Ping-扫描" class="headerlink" title="1、 Ping 扫描"></a>1、 Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn &lt;target&gt; //只进行主机发现，不扫描端口。</span><br></pre></td></tr></table></figure>
+            <div itemprop="articleBody"><h2 id="Samba服务器配置"><a href="#Samba服务器配置" class="headerlink" title="Samba服务器配置"></a>Samba服务器配置</h2><p>1、创建一个挂载点（目录）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /mnt/cdrom</span><br></pre></td></tr></table></figure>
 
-<h5 id="2、禁用-DNS-解析的-Ping-扫描"><a href="#2、禁用-DNS-解析的-Ping-扫描" class="headerlink" title="2、禁用 DNS 解析的 Ping 扫描"></a>2、禁用 DNS 解析的 Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -n &lt;target&gt; //在进行主机发现时禁用 DNS 解析，直接使用 IP 地址。</span><br></pre></td></tr></table></figure>
+<p>2、挂载光盘到创建的目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/cdrom /mnt/cdrom</span><br></pre></td></tr></table></figure>
 
-<h5 id="3、-ICMP-Ping-扫描"><a href="#3、-ICMP-Ping-扫描" class="headerlink" title="3、 ICMP Ping 扫描"></a>3、 ICMP Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PE &lt;target&gt; //使用 ICMP Echo 请求来发现在线主机。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>卸载光盘:<code>umount /mnt/cdrom</code></p>
+</blockquote>
+<p>3、配置本地光盘源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.repos.d/cdrom.repo</span><br></pre></td></tr></table></figure>
 
-<h5 id="4、-TCP-SYN-Ping-扫描"><a href="#4、-TCP-SYN-Ping-扫描" class="headerlink" title="4、 TCP SYN Ping 扫描"></a>4、 TCP SYN Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PS&lt;port&gt; &lt;target&gt; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[cdrom]</span><br><span class="line">name=cdrom</span><br><span class="line">baseurl=file:///mnt/cdrom</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
 
-<p>通过向指定端口发送 TCP SYN 包来检测主机是否存活。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PS80,443 &lt;target&gt;</span><br></pre></td></tr></table></figure>
+<p>4、安装samba</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install samba</span><br></pre></td></tr></table></figure>
 
-<h5 id="5、-TCP-ACK-Ping-扫描"><a href="#5、-TCP-ACK-Ping-扫描" class="headerlink" title="5、 TCP ACK Ping 扫描"></a>5、 TCP ACK Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PA&lt;port&gt; &lt;target&gt; </span><br></pre></td></tr></table></figure>
+<p>更换源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">#下载新的源配置文件</span><br></pre></td></tr></table></figure>
 
-<p>通过向指定端口发送 TCP ACK 包来发现在线主机。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PA80,443 &lt;target&gt;</span><br></pre></td></tr></table></figure>
+<p>清理 yum 缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
 
-<h5 id="6、-UDP-Ping-扫描"><a href="#6、-UDP-Ping-扫描" class="headerlink" title="6、 UDP Ping 扫描"></a>6、 UDP Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PU&lt;port&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
+<p>生成新的缓存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
 
-<p>使用 UDP ping 扫描目标主机。例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PU53 &lt;target&gt;</span><br></pre></td></tr></table></figure>
+<p>列出所有可用的 yum 源</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
 
-<h5 id="7、-跳过-Ping-扫描"><a href="#7、-跳过-Ping-扫描" class="headerlink" title="7、 跳过 Ping 扫描"></a>7、 跳过 Ping 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -Pn &lt;target&gt; //不进行 Ping 扫描，直接对指定的主机进行端口扫描。</span><br></pre></td></tr></table></figure>
+<p>5、创建测试目录、用户及文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt</span><br><span class="line">mkdir hard</span><br><span class="line">mkdir soft</span><br><span class="line">cd hard</span><br><span class="line">touch hard.txt</span><br><span class="line">cd ..</span><br><span class="line">cd soft</span><br><span class="line">touch soft.txt</span><br><span class="line">groupadd hards</span><br><span class="line">groupadd softs</span><br><span class="line">useradd -g hards hard1</span><br><span class="line">useradd -g hards hard2</span><br><span class="line">useradd -g softs soft1</span><br><span class="line">useradd -g softs soft2</span><br></pre></td></tr></table></figure>
 
-<h5 id="8、ARP-扫描-局域网内"><a href="#8、ARP-扫描-局域网内" class="headerlink" title="8、ARP 扫描 (局域网内)"></a>8、ARP 扫描 (局域网内)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -PR &lt;target&gt; //在局域网中进行 ARP 请求来发现在线主机。</span><br></pre></td></tr></table></figure>
+<p>6、设置密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">passwd hard1</span><br><span class="line">smbpasswd -a hard1</span><br><span class="line">passwd hard2</span><br><span class="line">smbpasswd -a hard2</span><br><span class="line">passwd soft1</span><br><span class="line">smbpasswd -a soft1</span><br><span class="line">passwd soft2</span><br><span class="line">smbpasswd -a soft2</span><br></pre></td></tr></table></figure>
 
-<h5 id="9、仅使用特定的-Ping-类型"><a href="#9、仅使用特定的-Ping-类型" class="headerlink" title="9、仅使用特定的 Ping 类型"></a>9、仅使用特定的 Ping 类型</h5><p>可以组合使用多种 ping 类型，以提高主机发现的成功率。例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -PE -PS443 -PA80 &lt;target&gt; //这会同时使用 ICMP Echo、TCP SYN 和 TCP ACK 来发现在线主机。</span><br></pre></td></tr></table></figure>
+<p>7、修改目录权利</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt</span><br><span class="line">ls -l</span><br><span class="line">chmod 777 hard/</span><br><span class="line">chmod 777 soft/</span><br><span class="line">ls -l</span><br><span class="line">chown root:hards hard/</span><br><span class="line">chgrp softs soft/</span><br><span class="line">ls -l</span><br><span class="line">systemctl stop firewalld</span><br><span class="line">setenforce 0</span><br><span class="line">systemctl restart smb.service</span><br></pre></td></tr></table></figure>
 
-<h5 id="10、-主机发现和详细输出"><a href="#10、-主机发现和详细输出" class="headerlink" title="10、 主机发现和详细输出"></a>10、 主机发现和详细输出</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn -v &lt;target&gt; //进行主机发现并显示详细输出（-v 选项），可以帮助查看扫描过程中的更多细节。</span><br></pre></td></tr></table></figure>
+<p>8、samba配置文件修改</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/samba/</span><br><span class="line">vi smb.conf</span><br></pre></td></tr></table></figure>
 
-<h5 id="11、-使用特定-IP-片段进行发现"><a href="#11、-使用特定-IP-片段进行发现" class="headerlink" title="11、 使用特定 IP 片段进行发现"></a>11、 使用特定 IP 片段进行发现</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn --source-port &lt;port&gt; &lt;target&gt; //指定源端口来进行 ping 扫描，这可以用来绕过某些防火墙规则则。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup = WORKGROUP</span><br><span class="line">        server string=File Server</span><br><span class="line">        security=user</span><br><span class="line"></span><br><span class="line">[hards]</span><br><span class="line">        comment = hards</span><br><span class="line">        path=/mnt/hard</span><br><span class="line">        browseable=yes</span><br><span class="line">        vaild users=@hards</span><br><span class="line"></span><br><span class="line">[softs]</span><br><span class="line">        comment = softs</span><br><span class="line">        path = /mnt/soft</span><br><span class="line">        writable = yes</span><br><span class="line">        browseable = yes</span><br><span class="line">        vaild users=@softs</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、nmap端口扫描"><a href="#二、nmap端口扫描" class="headerlink" title="二、nmap端口扫描"></a>二、nmap端口扫描</h2><h5 id="1、基本扫描"><a href="#1、基本扫描" class="headerlink" title="1、基本扫描"></a>1、基本扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap &lt;target&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart smb.service</span><br></pre></td></tr></table></figure>
 
-<h5 id="2、扫描指定端口"><a href="#2、扫描指定端口" class="headerlink" title="2、扫描指定端口"></a>2、扫描指定端口</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p &lt;port&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<p>扫描目标主机上的指定端口，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 80,443 &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、扫描端口范围"><a href="#3、扫描端口范围" class="headerlink" title="3、扫描端口范围"></a>3、扫描端口范围</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p &lt;port-range&gt; &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<p>扫描指定范围的端口，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p 1-1000 &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、快速扫描-常用的-1000-个端口"><a href="#4、快速扫描-常用的-1000-个端口" class="headerlink" title="4、快速扫描 (常用的 1000 个端口)"></a>4、快速扫描 (常用的 1000 个端口)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -F &lt;target&gt;   //只扫描常用的 1000 个端口。</span><br></pre></td></tr></table></figure>
-
-<h5 id="5、-扫描所有端口-0-65535"><a href="#5、-扫描所有端口-0-65535" class="headerlink" title="5、 扫描所有端口 (0-65535)"></a>5、 扫描所有端口 (0-65535)</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p- &lt;target&gt;</span><br></pre></td></tr></table></figure>
-
-<h5 id="6、-服务版本检测"><a href="#6、-服务版本检测" class="headerlink" title="6、 服务版本检测"></a>6、 服务版本检测</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sV &lt;target&gt; //检测开放端口上运行的服务版本信息。</span><br></pre></td></tr></table></figure>
-
-<h5 id="7、-操作系统检测"><a href="#7、-操作系统检测" class="headerlink" title="7、 操作系统检测"></a>7、 操作系统检测</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -O &lt;target&gt; //检测目标主机的操作系统信息。</span><br></pre></td></tr></table></figure>
-
-<h5 id="8、-TCP-SYN-扫描（默认）"><a href="#8、-TCP-SYN-扫描（默认）" class="headerlink" title="8、 TCP SYN 扫描（默认）"></a>8、 TCP SYN 扫描（默认）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS &lt;target&gt; //进行 TCP SYN 扫描，这是一种快速且隐蔽的扫描方法。</span><br></pre></td></tr></table></figure>
-
-<h5 id="9、-UDP-扫描"><a href="#9、-UDP-扫描" class="headerlink" title="9、 UDP 扫描"></a>9、 UDP 扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sU &lt;target&gt; //扫描目标主机上的 UDP 端口。</span><br></pre></td></tr></table></figure>
-
-<h5 id="10、-禁止-DNS-解析"><a href="#10、-禁止-DNS-解析" class="headerlink" title="10、 禁止 DNS 解析"></a>10、 禁止 DNS 解析</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -n &lt;target&gt; //禁用 DNS 解析，直接使用 IP 地址进行扫描。</span><br></pre></td></tr></table></figure>
-
-<h5 id="11、服务版本和操作系统同时检测"><a href="#11、服务版本和操作系统同时检测" class="headerlink" title="11、服务版本和操作系统同时检测"></a>11、服务版本和操作系统同时检测</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -A &lt;target&gt; //进行服务版本检测、操作系统检测及其他高级扫描。</span><br></pre></td></tr></table></figure>
-
-<h5 id="12、-节省带宽和资源的扫描"><a href="#12、-节省带宽和资源的扫描" class="headerlink" title="12、 节省带宽和资源的扫描"></a>12、 节省带宽和资源的扫描</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -T3 &lt;target&gt; //调整扫描速度（0-5），T3 是中等速度，适用于避免过度负载网络。</span><br></pre></td></tr></table></figure>
-
-<h5 id="13、-以-ping-方式发现主机"><a href="#13、-以-ping-方式发现主机" class="headerlink" title="13、 以 ping 方式发现主机"></a>13、 以 ping 方式发现主机</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sn &lt;target&gt; //只发现目标主机是否存活，而不进行端口扫描。</span><br></pre></td></tr></table></figure>
-
-<p>未完待续。。。</p>
-<p>后续会补充！！！</p>
-<h2 id="重点声明"><a href="#重点声明" class="headerlink" title="重点声明"></a>重点声明</h2><p>请勿利用文章内的相关技术从事非法测试，由于传播、利用此文所提供的信息或者工具而造成的任何直接或者间接的后果及损失，均由使用者本人负责，所产生的一切不良后果与文章作者无关。该文章仅供学习用途使用。</p>
+<p><img src="https://raw.gitmirror.com/InitiallyMXJ/Picture/main/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/1.png?raw=true"></p>
+<p><img src="https://raw.gitmirror.com/InitiallyMXJ/Picture/main/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/2.png?raw=true"></p>
 </div>
         </div>
         
@@ -278,7 +258,7 @@
     <script type="text/javascript">
         $(()=>{
             new QRCode("wechat-qr", {
-                text: "http://example.com/2024/11/10/nmap%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/",
+                text: "http://example.com/2024/12/10/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
@@ -290,11 +270,18 @@
             const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
             const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
             const twitterBase   = "https://twitter.com/intent/tweet?";
-            const hostUrl       = "http://example.com/2024/11/10/nmap%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/";
-            const title         = "「nmap一些常用指令」";
-            const excerpt       = `一、nmap主机发现1、 Ping 扫描1nmap -sn &lt;target&gt; //只进行主机发现，不扫描端口。
+            const hostUrl       = "http://example.com/2024/12/10/Samba%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/";
+            const title         = "「Samba服务器搭建部署」";
+            const excerpt       = `Samba服务器配置1、创建一个挂载点（目录）
+1mkdir /mnt/cdrom
 
-2、禁用 DNS 解析的 Ping 扫描1nmap -sn -n &lt;target&gt; //在进行主...`;
+2、挂载光盘到创建的目录
+1mount /dev/cdrom /mnt/cdrom
+
+
+卸载光盘:umount /mnt/cdrom
+
+3、配置本地...`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
@@ -316,7 +303,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2024-11-10T11:27:30.591Z" itemprop="dateModified">最后编辑：2024-11-10</time>
+                    <time datetime="2024-12-10T12:18:40.867Z" itemprop="dateModified">最后编辑：2024-12-10</time>
                 </div>
             </div>
         </footer>
@@ -324,10 +311,10 @@
     
         <nav class="navigation post-navigation clearfix" role="navigation">
             
-            
-            <div class="nav-next clearfix">
-                <a title=" CVE-2019-10758远程代码执行漏洞" href="/2024/11/10/CVE-2019-10758远程代码执行漏洞复现/">下一篇 &gt;</a>
+            <div class="nav-previous clearfix">
+                <a title=" Ftp服务器搭建部署" href="/2024/12/10/Ftp服务器搭建部署/">&lt; 上一篇</a>
             </div>
+            
             
         </nav>
     
