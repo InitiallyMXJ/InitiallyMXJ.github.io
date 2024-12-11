@@ -17,16 +17,16 @@
   
     <meta name="keywords" content="" />
   
-  <meta name="description" content="Ftp服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1vi &#x2F;etc&#x2F;yum.repos.d&#x2F;cdrom.repo  12345[cdrom]name&#x3D;cdrombaseurl&#x3D;file:&#x2F;&#x2F;&#x2F;mnt&#x2F;cdromg">
+  <meta name="description" content="Ftp服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1234mkdir &#x2F;etc&#x2F;yum.repos.d&#x2F;bakcd &#x2F;etc&#x2F;yum.repos.dmv *.repo .&#x2F;bakvi &#x2F;etc&#x2F;yum.repos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ftp服务器搭建部署">
 <meta property="og:url" content="http://example.com/2024/12/10/Ftp%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E9%83%A8%E7%BD%B2/index.html">
 <meta property="og:site_name" content="马小九の个人博客">
-<meta property="og:description" content="Ftp服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1vi &#x2F;etc&#x2F;yum.repos.d&#x2F;cdrom.repo  12345[cdrom]name&#x3D;cdrombaseurl&#x3D;file:&#x2F;&#x2F;&#x2F;mnt&#x2F;cdromg">
+<meta property="og:description" content="Ftp服务器配置1、创建一个挂载点（目录） 1mkdir &#x2F;mnt&#x2F;cdrom  2、挂载光盘到创建的目录 1mount &#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom   卸载光盘:umount &#x2F;mnt&#x2F;cdrom  3、配置本地光盘源 1234mkdir &#x2F;etc&#x2F;yum.repos.d&#x2F;bakcd &#x2F;etc&#x2F;yum.repos.dmv *.repo .&#x2F;bakvi &#x2F;etc&#x2F;yum.repos">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/images/icon.jpg">
 <meta property="article:published_time" content="2024-12-10T10:39:37.000Z">
-<meta property="article:modified_time" content="2024-12-11T07:02:09.708Z">
+<meta property="article:modified_time" content="2024-12-11T09:48:05.792Z">
 <meta property="article:author" content="马小九">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/images/icon.jpg">
@@ -140,7 +140,7 @@
                         <i class="fa fa-edit"></i> 
                         
                         
-                            ~2.49K
+                            ~2.37K
                         
                         字
                     </li>
@@ -152,7 +152,7 @@
             
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p>本文最后编辑于 <time datetime="1733900529708"></time> 前，其中的内容可能需要更新。</p></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1733910485792"></time> 前，其中的内容可能需要更新。</p></div>
             </div>
             
             
@@ -168,24 +168,12 @@
 <p>卸载光盘:<code>umount /mnt/cdrom</code></p>
 </blockquote>
 <p>3、配置本地光盘源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/yum.repos.d/cdrom.repo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/yum.repos.d/bak</span><br><span class="line">cd /etc/yum.repos.d</span><br><span class="line">mv *.repo ./bak</span><br><span class="line">vi /etc/yum.repos.d/cdrom.repo</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[cdrom]</span><br><span class="line">name=cdrom</span><br><span class="line">baseurl=file:///mnt/cdrom</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br></pre></td></tr></table></figure>
 
 <p>4、安装ftp</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install vsftpd</span><br></pre></td></tr></table></figure>
-
-<p>更换源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line">#下载新的源配置文件</span><br></pre></td></tr></table></figure>
-
-<p>清理 yum 缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum clean all</span><br></pre></td></tr></table></figure>
-
-<p>生成新的缓存</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
-
-<p>列出所有可用的 yum 源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
 
 <p>5、创建用户、用户组</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">groupadd dept1 #创建一个名为dept1的用户组</span><br><span class="line">groupadd dept2 #创建一个名为dept2的用户组</span><br><span class="line">groupadd master #创建一个名为master的用户组</span><br><span class="line">useradd -G dept1 tom #创建一个名为tom的用户，并将其添加到dept1用户组作为附加组</span><br><span class="line">useradd -G dept2 jack #创建jack用户，并将其添加到dept2用户组作为附加组</span><br><span class="line">useradd -G dept1,dept2,master mike #创建mike用户，并将其添加到dept1、dept2和master这三个用户组作为附加组</span><br><span class="line">tail /etc/gshadow #查看/etc/gshadow文件的末尾几行</span><br></pre></td></tr></table></figure>
@@ -297,7 +285,7 @@
                     
                 </div>
                 <div class="pull-date">
-                    <time datetime="2024-12-11T07:02:09.708Z" itemprop="dateModified">最后编辑：2024-12-11</time>
+                    <time datetime="2024-12-11T09:48:05.792Z" itemprop="dateModified">最后编辑：2024-12-11</time>
                 </div>
             </div>
         </footer>
